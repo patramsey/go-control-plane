@@ -757,6 +757,7 @@ func (c *rateLimitServiceClient) ShouldRateLimit(ctx context.Context, in *RateLi
 type RateLimitServiceServer interface {
 	// Determine whether rate limiting should take place.
 	ShouldRateLimit(context.Context, *RateLimitRequest) (*RateLimitResponse, error)
+    ResetRateLimit(context.Context, *RateLimitRequest) (*RateLimitResponse, error)
 }
 
 // UnimplementedRateLimitServiceServer can be embedded to have forward compatible implementations.
