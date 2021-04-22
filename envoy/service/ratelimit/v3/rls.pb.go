@@ -734,6 +734,7 @@ const _ = grpc.SupportPackageIsVersion6
 type RateLimitServiceClient interface {
 	// Determine whether rate limiting should take place.
 	ShouldRateLimit(ctx context.Context, in *RateLimitRequest, opts ...grpc.CallOption) (*RateLimitResponse, error)
+	ResetRateLimit(ctx context.Context, in *RateLimitRequest, opts ...grpc.CallOption) (*RateLimitResponse, error)
 }
 
 type rateLimitServiceClient struct {
@@ -753,11 +754,20 @@ func (c *rateLimitServiceClient) ShouldRateLimit(ctx context.Context, in *RateLi
 	return out, nil
 }
 
+func (c *rateLimitServiceClient) ResetRateLimit(ctx context.Context, in *RateLimitRequest, opts ...grpc.CallOption) (*RateLimitResponse, error) {
+	out := new(RateLimitResponse)
+	err := c.cc.Invoke(ctx, "/envoy.service.ratelimit.v3.RateLimitService/ResetRateLimit", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RateLimitServiceServer is the server API for RateLimitService service.
 type RateLimitServiceServer interface {
 	// Determine whether rate limiting should take place.
 	ShouldRateLimit(context.Context, *RateLimitRequest) (*RateLimitResponse, error)
-    ResetRateLimit(context.Context, *RateLimitRequest) (*RateLimitResponse, error)
+	ResetRateLimit(context.Context, *RateLimitRequest) (*RateLimitResponse, error)
 }
 
 // UnimplementedRateLimitServiceServer can be embedded to have forward compatible implementations.
