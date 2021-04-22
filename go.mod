@@ -16,4 +16,4 @@ require (
 	google.golang.org/protobuf v1.25.0
 )
 
-replace github.com/envoyproxy/go-control-plane => github.com/patramsey/go-control-plane v0.9.9
+replace github.com/envoyproxy/go-control-plane v0.9.9 => github.com/patramsey/go-control-plane v0.9.10
