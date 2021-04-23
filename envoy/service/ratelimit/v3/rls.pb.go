@@ -637,6 +637,8 @@ var file_envoy_service_ratelimit_v3_rls_proto_depIdxs = []int32{
 	9,  // 9: envoy.service.ratelimit.v3.RateLimitResponse.DescriptorStatus.duration_until_reset:type_name -> google.protobuf.Duration
 	2,  // 10: envoy.service.ratelimit.v3.RateLimitService.ShouldRateLimit:input_type -> envoy.service.ratelimit.v3.RateLimitRequest
 	3,  // 11: envoy.service.ratelimit.v3.RateLimitService.ShouldRateLimit:output_type -> envoy.service.ratelimit.v3.RateLimitResponse
+	2,  // 12: envoy.service.ratelimit.v3.RateLimitService.ResetRateLimit:input_type -> envoy.service.ratelimit.v3.RateLimitRequest
+	3,  // 13: envoy.service.ratelimit.v3.RateLimitService.ResetRateLimit:output_type -> envoy.service.ratelimit.v3.RateLimitResponse
 	11, // [11:12] is the sub-list for method output_type
 	10, // [10:11] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
