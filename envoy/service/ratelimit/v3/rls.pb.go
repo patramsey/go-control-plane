@@ -828,7 +828,7 @@ var _RateLimitService_serviceDesc = grpc.ServiceDesc{
 		},
 		{
 			MethodName: "ResetRateLimit",
-			Handler:    _RateLimitService_ShouldRateLimit_Handler,
+			Handler:    _RateLimitService_ResetRateLimit_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
