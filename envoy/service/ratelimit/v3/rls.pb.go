@@ -800,12 +800,34 @@ func _RateLimitService_ShouldRateLimit_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RateLimitService_ResetRateLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RateLimitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RateLimitServiceServer).ResetRateLimit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/envoy.service.ratelimit.v3.RateLimitService/ResetRateLimit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RateLimitServiceServer).ResetRateLimit(ctx, req.(*RateLimitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _RateLimitService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "envoy.service.ratelimit.v3.RateLimitService",
 	HandlerType: (*RateLimitServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "ShouldRateLimit",
+			Handler:    _RateLimitService_ShouldRateLimit_Handler,
+		},
+		{
+			MethodName: "ResetRateLimit",
 			Handler:    _RateLimitService_ShouldRateLimit_Handler,
 		},
 	},
